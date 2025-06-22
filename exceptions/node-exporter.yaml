@@ -1,0 +1,53 @@
+apiVersion: kyverno.io/v2beta1
+kind: PolicyException
+metadata:
+  name: node-exporter
+  namespace: monitoring
+spec:
+  exceptions:
+  - policyName: ensure-probes-different
+    ruleNames:
+    - "*"
+  - policyName: require-image-checksum
+    ruleNames:
+    - "*" 
+  - policyName: require-pod-probes
+    ruleNames:
+    - "*" 
+  - policyName: fs-group
+    ruleNames:
+    - "*" 
+  - policyName: host-ipc
+    ruleNames:
+    - "*" 
+  - policyName: host-pid
+    ruleNames:
+    - "*" 
+  - policyName: host-network
+    ruleNames:
+    - "*"
+  - policyName: host-ports
+    ruleNames:
+    - "*"
+  - policyName: run-as-group
+    ruleNames:
+    - "*"
+  - policyName: volume-types
+    ruleNames:
+    - "*" 
+  match:
+    any:
+    - resources:
+        kinds:
+          - DaemonSet
+        namespaces:
+          - monitoring
+        names:
+          - "node-exporter"
+    - resources:
+        kinds:
+          - Pod
+        namespaces:
+          - monitoring
+        names:
+          - "node-exporter-*"

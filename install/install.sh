@@ -1,0 +1,1 @@
+kubectl create -f  https://github.com/kyverno/kyverno/releases/download/v1.14.2/install.yaml

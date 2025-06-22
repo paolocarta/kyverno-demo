@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: Event
+metadata:
+  name: kyverno-reports-server-85fd7c8469.17f8d1d948330087
+  namespace: support
+involvedObject:
+  apiVersion: apps/v1
+  kind: ReplicaSet
+  name: kyverno-reports-server-85fd7c8469
+  namespace: support
+message: 'policy require-image-checksum/autogen-require-image-checksum fail: validation
+  error: Images must use checksums as well as tags. rule autogen-require-image-checksum
+  failed at path /spec/template/spec/containers/0/image/'
+reason: PolicyViolation
+reportingComponent: kyverno-scan
+reportingInstance: kyverno-scan-kyverno-reports-controller-6d86c7ff65-mcj42
+type: Warning
+action: Resource Passed

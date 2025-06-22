@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: conference-demo
+  namespace: default
+  labels:
+    app: conference-demo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: conference-demo
+  template:
+    metadata:
+      labels:
+        app: conference-demo
+    spec:
+      containers:
+        - name: conference-demo
+          image: nginx:latest 
+          ports:
+            - containerPort: 80

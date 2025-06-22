@@ -1,0 +1,44 @@
+apiVersion: kyverno.io/v2beta1
+kind: PolicyException
+metadata:
+  name: logging-components-fluentd
+  namespace: logging
+spec:
+  exceptions:
+  - policyName: ensure-probes-different
+    ruleNames:
+    - "*"
+  - policyName: require-pod-probes
+    ruleNames:
+    - "*"
+  - policyName: capabilities-drop
+    ruleNames:
+    - "*"
+  - policyName: fs-group
+    ruleNames:
+    - "*"
+  - policyName: readonly-root-filesystem
+    ruleNames:
+    - "*"
+  - policyName: run-as-user
+    ruleNames:
+    - "*"
+  - policyName: run-as-group
+    ruleNames:
+    - "*" 
+  match:
+    any:
+    - resources:
+        kinds:
+          - StatefulSet
+        namespaces:
+          - logging
+        names:
+          - "logging-components-fluentd"
+    - resources:
+        kinds:
+          - Pod
+        namespaces:
+          - logging
+        names:
+          - "logging-components-fluentd-*"

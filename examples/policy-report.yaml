@@ -1,0 +1,121 @@
+apiVersion: wgpolicyk8s.io/v1alpha2
+kind: PolicyReport
+metadata:
+  creationTimestamp: "2025-06-22T10:12:51Z"
+  generation: 3
+  labels:
+    app.kubernetes.io/managed-by: kyverno
+  name: 12f0240a-8716-42ab-b082-67ed26e51f5e
+  namespace: test
+  ownerReferences:
+  - apiVersion: v1
+    kind: Pod
+    name: conference-demo-7578c84949-wmqcm
+    uid: 12f0240a-8716-42ab-b082-67ed26e51f5e
+  resourceVersion: "391266"
+  uid: 1c774e7f-3207-49a2-8072-1476f5483b25
+results:
+- category: Multi-Tenancy
+  message: validation rule 'validate-namespace' passed.
+  policy: disallow-default-namespace
+  properties:
+    process: background scan
+  result: pass
+  rule: validate-namespace
+  scored: true
+  severity: medium
+  source: kyverno
+  timestamp:
+    nanos: 0
+    seconds: 1750588361
+- category: Best Practices
+  message: rule passed
+  policy: disallow-latest-tag
+  properties:
+    process: background scan
+  result: pass
+  rule: require-image-tag
+  scored: true
+  severity: medium
+  source: kyverno
+  timestamp:
+    nanos: 0
+    seconds: 1750588361
+- category: Best Practices
+  message: rule passed
+  policy: disallow-latest-tag
+  properties:
+    process: background scan
+  result: pass
+  rule: validate-image-tag
+  scored: true
+  severity: medium
+  source: kyverno
+  timestamp:
+    nanos: 0
+    seconds: 1750588361
+- category: Pod Security Standards (Baseline)
+  message: validation rule 'privileged-0' passed.
+  policy: privileged
+  properties:
+    process: background scan
+  result: pass
+  rule: privileged-0
+  scored: true
+  severity: medium
+  source: kyverno
+  timestamp:
+    nanos: 0
+    seconds: 1750588361
+- category: Best Practices
+  message: validation rule 'check-for-labels' passed.
+  policy: require-labels
+  properties:
+    process: background scan
+  result: pass
+  rule: check-for-labels
+  scored: true
+  severity: medium
+  source: kyverno
+  timestamp:
+    nanos: 0
+    seconds: 1750588361
+- category: Best Practices, EKS Best Practices
+  message: validation rule 'validate-resources' passed.
+  policy: require-requests-limits
+  properties:
+    process: background scan
+  result: pass
+  rule: validate-resources
+  scored: true
+  severity: medium
+  source: kyverno
+  timestamp:
+    nanos: 0
+    seconds: 1750588361
+- category: Best Practices, EKS Best Practices
+  message: 'validation error: Unknown image registry. rule validate-registries failed
+    at path /spec/containers/0/image/'
+  policy: restrict-image-registries
+  properties:
+    process: background scan
+  result: fail
+  rule: validate-registries
+  scored: true
+  severity: medium
+  source: kyverno
+  timestamp:
+    nanos: 0
+    seconds: 1750588361
+scope:
+  apiVersion: v1
+  kind: Pod
+  name: conference-demo-7578c84949-wmqcm
+  namespace: test
+  uid: 12f0240a-8716-42ab-b082-67ed26e51f5e
+summary:
+  error: 0
+  fail: 1
+  pass: 6
+  skip: 0
+  warn: 0

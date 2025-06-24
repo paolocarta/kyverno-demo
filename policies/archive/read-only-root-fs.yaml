@@ -15,11 +15,14 @@ metadata:
       with `readOnlyRootFilesystem: true`. 
 spec:
   validationFailureAction: Enforce
-  admission: true
   background: true
   rules:
     - name: readonly-root-filesystem-0
-      skipBackgroundRequests: true
+      match:
+        any:
+        - resources:
+            kinds:
+            - Pod
       validate:
         pattern:
           spec:
@@ -33,9 +36,5 @@ spec:
               - "=(securityContext)":
                   "=(readOnlyRootFilesystem)": true
         message: Rejected by readonly-root-filesystem-0 rule. Containers cannot write into the root filesystem.
-      match:
-        any:
-        - resources:
-            kinds:
-            - Pod
+
             

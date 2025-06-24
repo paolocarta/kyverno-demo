@@ -55217,11 +55217,11 @@ spec:
             - --loggingFormat=text
             - --v=2
             - --omitEvents=PolicyApplied,PolicySkipped
-            - --enablePolicyException=false
+            - --enablePolicyException=true
             - --protectManagedResources=false
             - --allowInsecureRegistry=false
             - --registryCredentialHelpers=default,google,amazon,azure,github
-            - --enableReporting=validate,mutate,mutateExisting,imageVerify,generate
+            - --enableReporting=validate
             
           resources:
             limits:
@@ -55619,7 +55619,7 @@ spec:
             - --validatingAdmissionPolicyReports=false
             - --backgroundScan=true
             - --backgroundScanWorkers=2
-            - --backgroundScanInterval=1h
+            - --backgroundScanInterval=5m
             - --skipResourceFilters=true
             - --enableConfigMapCaching=true
             - --enableDeferredLoading=true
@@ -55627,10 +55627,10 @@ spec:
             - --loggingFormat=text
             - --v=2
             - --omitEvents=PolicyApplied,PolicySkipped
-            - --enablePolicyException=false
+            - --enablePolicyException=true
             - --allowInsecureRegistry=false
             - --registryCredentialHelpers=default,google,amazon,azure,github
-            - --enableReporting=validate,mutate,mutateExisting,imageVerify,generate
+            - --enableReporting=validate
           env:
           - name: KYVERNO_SERVICEACCOUNT_NAME
             value: kyverno-reports-controller

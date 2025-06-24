@@ -117,7 +117,11 @@ spec:
   background: true
   rules:
     - name: run-as-group
-      skipBackgroundRequests: true
+      match:
+        any:
+        - resources:
+            kinds:
+              - Pod
       validate:
         message: >-
           Running with root group IDs is disallowed. The fields
@@ -148,8 +152,3 @@ spec:
             containers:
               - securityContext:
                   runAsGroup: ">=1001 & <=65535"
-      match:
-        any:
-        - resources:
-            kinds:
-              - Pod

@@ -19,7 +19,6 @@ spec:
   background: true
   rules:
     - name: capabilities-drop-0
-      skipBackgroundRequests: true
       validate:
         message: >-
           Containers must drop `ALL` capabilities.
@@ -68,7 +67,6 @@ spec:
         - key: "{{ request.operation || 'BACKGROUND' }}"
           operator: NotEquals
           value: DELETE
-      skipBackgroundRequests: true
       validate:
         message: >-
           Any capabilities added beyond the allowed list (AUDIT_WRITE, CHOWN, DAC_OVERRIDE, FOWNER,

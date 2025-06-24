@@ -1,0 +1,43 @@
+apiVersion: kyverno.io/v1
+kind: ClusterPolicy
+metadata:
+  name: allow-only-demo-namespace
+  namespace: kyverno
+  annotations:
+    pod-policies.kyverno.io/autogen-controllers: none
+    policies.kyverno.io/title: Allow Only Demo Namespace
+    policies.kyverno.io/minversion: 1.6.0
+    policies.kyverno.io/category: Multi-Tenancy
+    policies.kyverno.io/severity: medium
+    policies.kyverno.io/subject: Pod
+    policies.kyverno.io/description: >-
+      Only the 'demo' namespace is allowed for workloads. All other namespaces are disallowed.
+spec:
+  validationFailureAction: Audit
+  background: true
+  rules:
+  - name: validate-namespace
+    match:
+      any:
+      - resources:
+          kinds:
+          - Pod
+    validate:
+      message: "Only the 'demo' namespace is allowed."
+      pattern:
+        metadata:
+          namespace: demo
+  - name: validate-podcontroller-namespace
+    match:
+      any:
+      - resources:
+          kinds:
+          - DaemonSet
+          - Deployment
+          - Job
+          - StatefulSet
+    validate:
+      message: "Only the 'demo' namespace is allowed for pod controllers."
+      pattern:
+        metadata:
+          namespace: demo

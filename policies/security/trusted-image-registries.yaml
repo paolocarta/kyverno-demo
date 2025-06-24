@@ -2,6 +2,7 @@ apiVersion: kyverno.io/v1
 kind: ClusterPolicy
 metadata:
   name: restrict-image-registries
+  namespace: kyverno
   annotations:
     policies.kyverno.io/title: Restrict Image Registries
     policies.kyverno.io/category: Best Practices, EKS Best Practices

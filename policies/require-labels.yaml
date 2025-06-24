@@ -2,7 +2,6 @@ apiVersion: kyverno.io/v1
 kind: ClusterPolicy
 metadata:
   name: require-labels
-  namespace: kyverno
   annotations:
     policies.kyverno.io/title: Require Labels
     policies.kyverno.io/category: Best Practices
